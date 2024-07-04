@@ -1,0 +1,23 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up C/C++ compiler
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+
+    - name: Build with Make
+      run: make all
+
+    - name: Run tests
+      run: make test
